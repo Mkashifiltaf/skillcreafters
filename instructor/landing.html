@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to SkillCrafters - Creator Partnership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-matrix min-h-screen text-white">
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex items-center">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    Join <span class="gradient-text">SkillCrafters</span> as a Premium Creator
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    Empower millions of students with your knowledge while we handle the technology
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <button class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105">
+                        Become a Partner
+                    </button>
+                    <button class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="py-20 bg-black bg-opacity-80">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">1M+</h3>
+                    <p class="text-gray-400">Active Students</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">95%</h3>
+                    <p class="text-gray-400">Completion Rate</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">4.9</h3>
+                    <p class="text-gray-400">Average Rating</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold gradient-text mb-2">50+</h3>
+                    <p class="text-gray-400">Premium Creators</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Why Partner With Us?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Advanced Analytics</h3>
+                    <p class="text-gray-300">
+                        Get detailed insights into student engagement, progress, and learning patterns with our AI-powered analytics.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-purple-500 text-4xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Interactive Learning</h3>
+                    <p class="text-gray-300">
+                        Integrated code editor, AI-assisted hints, and real-time feedback for your students.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-pink-500 text-4xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Community Building</h3>
+                    <p class="text-gray-300">
+                        Foster a thriving community with built-in discussion forums, live sessions, and student collaboration tools.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Revenue Sharing</h3>
+                    <p class="text-gray-300">
+                        Earn from premium features while keeping your content free for students. Multiple revenue streams available.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-brand"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Custom Branding</h3>
+                    <p class="text-gray-300">
+                        Maintain your brand identity with customizable landing pages, course themes, and certificates.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card rounded-xl p-6">
+                    <div class="text-red-500 text-4xl mb-4">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Automated Management</h3>
+                    <p class="text-gray-300">
+                        Focus on creating content while we handle hosting, infrastructure, and technical support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="py-20 bg-black bg-opacity-80">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">How It Works</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-600 to-purple-600"></div>
+                    
+                    <!-- Steps -->
+                    <div class="space-y-20">
+                        <!-- Step 1 -->
+                        <div class="relative">
+                            <div class="flex items-center justify-center mb-8">
+                                <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold">1</div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold mb-4">Join as a Partner</h3>
+                                <p class="text-gray-300">Complete our simple onboarding process and get verified as a premium creator.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative">
+                            <div class="flex items-center justify-center mb-8">
+                                <div class="bg-purple-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold">2</div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold mb-4">Import Your Content</h3>
+                                <p class="text-gray-300">Easily import your existing YouTube content or create new courses directly on our platform.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative">
+                            <div class="flex items-center justify-center mb-8">
+                                <div class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold">3</div>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold mb-4">Customize & Launch</h3>
+                                <p class="text-gray-300">Add interactive elements, customize your branding, and launch your enhanced learning experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">Ready to Transform Your Teaching?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Join our growing community of educators and impact millions of learners worldwide.
+            </p>
+            <button class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105">
+                Apply Now
+            </button>
+        </div>
+    </div>
+</body>
+</html>

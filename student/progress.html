@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Progress - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {                                                                            
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(112, 105, 105, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .achievement-card {
+            transition: all 0.3s ease;
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-matrix min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                    <a href="../practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                    <a href="progress.html" class="text-gray-300 hover:text-white transition-colors">Progress</a>
+                    <a href="../community.html" class="text-gray-300 hover:text-white transition-colors">Community</a>
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full cursor-pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <!-- Learning Streak -->
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Learning Streak</h3>
+                        <div class="text-yellow-500">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">15 Days</div>
+                    <p class="text-gray-400 text-sm">Keep it up! You're doing great!</p>
+                </div>
+
+                <!-- Time Spent -->
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Time Spent</h3>
+                        <div class="text-blue-500">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">45h 30m</div>
+                    <p class="text-gray-400 text-sm">This month</p>
+                </div>
+
+                <!-- Completed Courses -->
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Completed</h3>
+                        <div class="text-green-500">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">3 Courses</div>
+                    <p class="text-gray-400 text-sm">Out of 5 enrolled</p>
+                </div>
+
+                <!-- Skill Points -->
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Skill Points</h3>
+                        <div class="text-purple-500">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">2,450</div>
+                    <p class="text-gray-400 text-sm">Level 5 Developer</p>
+                </div>
+            </div>
+
+            <!-- Current Courses -->
+            <div class="glass-card rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-6">Current Courses</h2>
+                <div id="courses-container" class="space-y-6">
+                    <!-- Initial courses will be here -->
+                </div>
+                <div id="loading-spinner" class="hidden text-center py-4">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Achievements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Achievement 1 -->
+                    <div class="achievement-card glass-card rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-fire text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">15-Day Streak</h3>
+                        <p class="text-gray-400 text-sm">Consistent learner badge</p>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="achievement-card glass-card rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Code Master</h3>
+                        <p class="text-gray-400 text-sm">Completed 100 exercises</p>
+                    </div>
+
+                    <!-- Achievement 3 -->
+                    <div class="achievement-card glass-card rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-green-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Course Champion</h3>
+                        <p class="text-gray-400 text-sm">Completed 3 courses</p>
+                    </div>
+
+                    <!-- Achievement 4 -->
+                    <div class="achievement-card glass-card rounded-xl p-6 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-purple-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold mb-2">Community Hero</h3>
+                        <p class="text-gray-400 text-sm">Helped 50 students</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Analytics -->
+            <div class="glass-card rounded-xl p-6">
+                <h2 class="text-2xl font-bold mb-6">Learning Analytics</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Weekly Activity -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Weekly Activity</h3>
+                        <canvas id="weeklyChart" height="200"></canvas>
+                    </div>
+
+                    <!-- Skills Progress -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Skills Progress</h3>
+                        <canvas id="skillsChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Weekly Activity Chart
+            const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
+            new Chart(weeklyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Hours Spent',
+                        data: [2.5, 3.2, 1.8, 4.0, 2.8, 3.5, 2.0],
+                        backgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#fff'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#fff'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Skills Progress Chart
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Python', 'Machine Learning', 'Web Dev', 'Data Science', 'Algorithms'],
+                    datasets: [{
+                        label: 'Current Level',
+                        data: [80, 65, 90, 70, 85],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: '#3b82f6',
+                        pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            pointLabels: {
+                                color: '#fff'
+                            },
+                            ticks: {
+                                color: '#fff',
+                                backdropColor: 'transparent'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+
+        // Add this before the existing script tags
+        const coursesData = [
+            {
+                thumbnail: "https://i.ytimg.com/vi/rfscVS0vtbw/hqdefault.jpg",
+                title: "Learn Python - Full Course for Beginners",
+                lessons: "12/20",
+                timeSpent: "5h 30m",
+                progress: 60,
+                url: "https://www.youtube.com/watch?v=rfscVS0vtbw"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/KNAWp2S3w94/hqdefault.jpg",
+                title: "Machine Learning for Everybody",
+                lessons: "5/15",
+                timeSpent: "3h 45m",
+                progress: 33,
+                url: "https://www.youtube.com/watch?v=KNAWp2S3w94"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/7eh4d6sabA0/hqdefault.jpg",
+                title: "React Course - Beginner's Tutorial",
+                lessons: "8/25",
+                timeSpent: "4h 20m",
+                progress: 45,
+                url: "https://www.youtube.com/watch?v=7eh4d6sabA0"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/PkZNo7MFNFg/hqdefault.jpg",
+                title: "JavaScript Programming - Full Course",
+                lessons: "15/30",
+                timeSpent: "6h 15m",
+                progress: 50,
+                url: "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+            }
+            // Add more courses as needed
+        ];
+
+        let currentIndex = 0;
+        const coursesPerLoad = 2;
+        const coursesContainer = document.getElementById('courses-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        let isLoading = false;
+
+        function createCourseCard(course) {
+            return `
+                <div class="flex items-center space-x-4">
+                    <img src="${course.thumbnail}" alt="${course.title}" class="w-20 h-20 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2">${course.title}</h3>
+                        <div class="flex items-center text-sm text-gray-400 mb-2">
+                            <span class="mr-4"><i class="fas fa-book-open mr-2"></i>${course.lessons} Lessons</span>
+                            <span><i class="fas fa-clock mr-2"></i>${course.timeSpent} spent</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-600 rounded-full h-2" style="width: ${course.progress}%"></div>
+                        </div>
+                    </div>
+                    <a href="${course.url}" 
+                       target="_blank"
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                        Continue
+                    </a>
+                </div>
+            `;
+        }
+
+        function loadMoreCourses() {
+            if (isLoading || currentIndex >= coursesData.length) return;
+            
+            isLoading = true;
+            loadingSpinner.classList.remove('hidden');
+
+            // Simulate network delay
+            setTimeout(() => {
+                const fragment = document.createDocumentFragment();
+                const endIndex = Math.min(currentIndex + coursesPerLoad, coursesData.length);
+                
+                for (let i = currentIndex; i < endIndex; i++) {
+                    const courseWrapper = document.createElement('div');
+                    courseWrapper.innerHTML = createCourseCard(coursesData[i]);
+                    fragment.appendChild(courseWrapper.firstElementChild);
+                }
+                
+                coursesContainer.appendChild(fragment);
+                currentIndex = endIndex;
+                isLoading = false;
+                loadingSpinner.classList.add('hidden');
+            }, 1000);
+        }
+
+        // Initial load
+        loadMoreCourses();
+
+        // Infinite scroll handler
+        window.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            
+            if (scrollTop + clientHeight >= scrollHeight - 300) { // Load more when near bottom
+                loadMoreCourses();
+            }
+        });
+    </script>
+</body>
+</html>

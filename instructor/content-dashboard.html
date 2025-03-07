@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .content-card {
+            transition: all 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-matrix min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                    <a href="content-dashboard.html" class="text-white">Content</a>
+                    <a href="analytics.html" class="text-gray-300 hover:text-white transition-colors">Analytics</a>
+                    <a href="community.html" class="text-gray-300 hover:text-white transition-colors">Community</a>
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full cursor-pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <button class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-blue-500 text-2xl">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">New Course</h3>
+                            <p class="text-sm text-gray-400">Create from scratch</p>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-purple-500 text-2xl">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Import Content</h3>
+                            <p class="text-sm text-gray-400">From YouTube</p>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors" onclick="openAIExerciseGenerator()">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-green-500 text-2xl">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">AI Generator</h3>
+                            <p class="text-sm text-gray-400">Create exercises</p>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-yellow-500 text-2xl">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Batch Actions</h3>
+                            <p class="text-sm text-gray-400">Bulk operations</p>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Content List -->
+                <div class="lg:col-span-2">
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Your Content</h2>
+                            <div class="flex space-x-4">
+                                <select class="bg-black/30 text-white px-4 py-2 rounded-lg">
+                                    <option>All Types</option>
+                                    <option>Courses</option>
+                                    <option>Exercises</option>
+                                    <option>Projects</option>
+                                </select>
+                                <select class="bg-black/30 text-white px-4 py-2 rounded-lg">
+                                    <option>All Status</option>
+                                    <option>Published</option>
+                                    <option>Draft</option>
+                                    <option>Archived</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Content Cards -->
+                        <div class="space-y-4">
+                            <!-- Content Item 1 -->
+                            <div class="content-card glass-card rounded-xl p-4">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://via.placeholder.com/80" alt="Course" class="w-20 h-20 rounded-lg">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="font-semibold">Python for Beginners</h3>
+                                            <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-sm">Published</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm mb-3">
+                                            Complete Python course for beginners with interactive exercises
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                            <span><i class="fas fa-users mr-2"></i>1,234 students</span>
+                                            <span><i class="fas fa-star mr-2"></i>4.8 rating</span>
+                                            <span><i class="fas fa-clock mr-2"></i>Updated 2 days ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Item 2 -->
+                            <div class="content-card glass-card rounded-xl p-4">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://via.placeholder.com/80" alt="Course" class="w-20 h-20 rounded-lg">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="font-semibold">Data Structures & Algorithms</h3>
+                                            <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded-full text-sm">Draft</span>
+                                        </div>
+                                        <p class="text-gray-400 text-sm mb-3">
+                                            Comprehensive DSA course with practice problems
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                            <span><i class="fas fa-clock mr-2"></i>Last edited 1 hour ago</span>
+                                            <span><i class="fas fa-tasks mr-2"></i>15/20 sections complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- AI Assistant -->
+                    <div class="glass-card rounded-xl p-4 mb-8">
+                        <h2 class="text-xl font-bold mb-4">AI Assistant</h2>
+                        <div class="space-y-4">
+                            <button class="w-full bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 p-3 rounded-lg text-left">
+                                <i class="fas fa-magic mr-2"></i>
+                                Generate Exercise Set
+                            </button>
+                            <button class="w-full bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 p-3 rounded-lg text-left">
+                                <i class="fas fa-brain mr-2"></i>
+                                Improve Content
+                            </button>
+                            <button class="w-full bg-green-600/20 hover:bg-green-600/30 text-green-400 p-3 rounded-lg text-left">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                Optimize SEO
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="glass-card rounded-xl p-4 mb-8">
+                        <h2 class="text-xl font-bold mb-4">Quick Stats</h2>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Total Content</span>
+                                <span class="font-semibold">24 items</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Published</span>
+                                <span class="font-semibold">18 items</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Draft</span>
+                                <span class="font-semibold">6 items</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Total Students</span>
+                                <span class="font-semibold">5,678</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="glass-card rounded-xl p-4">
+                        <h2 class="text-xl font-bold mb-4">Recent Activity</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                <div>
+                                    <p class="text-sm">Updated Python course content</p>
+                                    <p class="text-xs text-gray-400">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <div>
+                                    <p class="text-sm">Generated new exercise set</p>
+                                    <p class="text-xs text-gray-400">5 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                <div>
+                                    <p class="text-sm">Imported YouTube content</p>
+                                    <p class="text-xs text-gray-400">Yesterday</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Exercise Generator Modal -->
+    <div id="aiGeneratorModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        <div class="glass-card rounded-xl p-6 max-w-2xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">AI Exercise Generator</h2>
+                <button onclick="closeAIExerciseGenerator()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="exerciseGeneratorForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Topic</label>
+                    <input type="text" class="w-full bg-black/30 text-white px-4 py-2 rounded-lg" placeholder="e.g., Arrays, Loops, Functions">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Programming Language</label>
+                        <select class="w-full bg-black/30 text-white px-4 py-2 rounded-lg">
+                            <option>Python</option>
+                            <option>JavaScript</option>
+                            <option>Java</option>
+                            <option>C++</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Difficulty</label>
+                        <select class="w-full bg-black/30 text-white px-4 py-2 rounded-lg">
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Key Concepts (comma-separated)</label>
+                    <input type="text" class="w-full bg-black/30 text-white px-4 py-2 rounded-lg" placeholder="e.g., loops, conditionals, variables">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Exercise Type</label>
+                    <select class="w-full bg-black/30 text-white px-4 py-2 rounded-lg">
+                        <option>Practice Problem</option>
+                        <option>Project</option>
+                        <option>Challenge</option>
+                        <option>Quiz</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Time Limit (minutes)</label>
+                    <input type="number" class="w-full bg-black/30 text-white px-4 py-2 rounded-lg" value="30">
+                </div>
+
+                <div class="flex justify-end space-x-4">
+                    <button type="button" onclick="closeAIExerciseGenerator()" class="px-4 py-2 rounded-lg bg-gray-600 hover:bg-gray-700">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700">
+                        Generate Exercise
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAIExerciseGenerator() {
+            document.getElementById('aiGeneratorModal').classList.remove('hidden');
+            document.getElementById('aiGeneratorModal').classList.add('flex');
+        }
+
+        function closeAIExerciseGenerator() {
+            document.getElementById('aiGeneratorModal').classList.add('hidden');
+            document.getElementById('aiGeneratorModal').classList.remove('flex');
+        }
+
+        document.getElementById('exerciseGeneratorForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // Add your AI exercise generation logic here
+            // This would connect to your AI Exercise Generator service
+        });
+    </script>
+</body>
+</html>

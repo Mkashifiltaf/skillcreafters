@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .discussion-card {
+            transition: all 0.3s ease;
+        }
+        .discussion-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-matrix min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                    <a href="../practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                    <a href="../student/progress.html" class="text-gray-300 hover:text-white transition-colors">Progress</a>
+                    <a href="index.html" class="text-white">Community</a>
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/32" alt="Profile" class="w-8 h-8 rounded-full cursor-pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Community Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Active Users</h3>
+                        <div class="text-blue-500">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">1,234</div>
+                    <p class="text-gray-400 text-sm">Online now</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Discussions</h3>
+                        <div class="text-purple-500">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">856</div>
+                    <p class="text-gray-400 text-sm">Active threads</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Solutions</h3>
+                        <div class="text-green-500">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">2,450</div>
+                    <p class="text-gray-400 text-sm">Problems solved</p>
+                </div>
+
+                <div class="glass-card rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">Study Groups</h3>
+                        <div class="text-yellow-500">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold mb-2">45</div>
+                    <p class="text-gray-400 text-sm">Active groups</p>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Discussions Feed -->
+                <div class="lg:col-span-2">
+                    <div class="glass-card rounded-xl p-6 mb-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold">Recent Discussions</h2>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                                New Discussion
+                            </button>
+                        </div>
+
+                        <!-- Discussion Cards -->
+                        <div class="space-y-4">
+                            <!-- Discussion 1 -->
+                            <div class="discussion-card glass-card rounded-xl p-4">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="font-semibold">Help with Python List Comprehension</h3>
+                                            <span class="text-sm text-gray-400">2 hours ago</span>
+                                        </div>
+                                        <p class="text-gray-300 text-sm mb-3">
+                                            I'm struggling to understand list comprehension in Python. Can someone explain with examples?
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                            <span><i class="fas fa-comment mr-2"></i>15 replies</span>
+                                            <span><i class="fas fa-eye mr-2"></i>234 views</span>
+                                            <span class="text-blue-500">Python</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Discussion 2 -->
+                            <div class="discussion-card glass-card rounded-xl p-4">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="font-semibold">Best Practices for React Hooks</h3>
+                                            <span class="text-sm text-gray-400">5 hours ago</span>
+                                        </div>
+                                        <p class="text-gray-300 text-sm mb-3">
+                                            What are some best practices when using React Hooks? Specifically useEffect and useState.
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                            <span><i class="fas fa-comment mr-2"></i>28 replies</span>
+                                            <span><i class="fas fa-eye mr-2"></i>456 views</span>
+                                            <span class="text-blue-500">React</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- Search -->
+                    <div class="glass-card rounded-xl p-4 mb-8">
+                        <div class="relative">
+                            <input type="text" 
+                                   placeholder="Search discussions..." 
+                                   class="w-full bg-black/30 text-white px-4 py-2 rounded-lg pl-10">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Popular Tags -->
+                    <div class="glass-card rounded-xl p-4 mb-8">
+                        <h2 class="text-xl font-bold mb-4">Popular Tags</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-green-600/20 text-green-400 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                            <span class="bg-pink-600/20 text-pink-400 px-3 py-1 rounded-full text-sm">Web Dev</span>
+                        </div>
+                    </div>
+
+                    <!-- Active Study Groups -->
+                    <div class="glass-card rounded-xl p-4 mb-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold">Study Groups</h2>
+                            <button class="text-blue-500 hover:text-blue-400">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                                <div>
+                                    <h3 class="font-semibold">Python Beginners</h3>
+                                    <p class="text-sm text-gray-400">12 members</p>
+                                </div>
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm">
+                                    Join
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                                <div>
+                                    <h3 class="font-semibold">DSA Practice</h3>
+                                    <p class="text-sm text-gray-400">28 members</p>
+                                </div>
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm">
+                                    Join
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Contributors -->
+                    <div class="glass-card rounded-xl p-4">
+                        <h2 class="text-xl font-bold mb-4">Top Contributors</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Alex Johnson</h3>
+                                    <p class="text-sm text-gray-400">450 solutions</p>
+                                </div>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <img src="https://via.placeholder.com/32" alt="User" class="w-8 h-8 rounded-full">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold">Sarah Miller</h3>
+                                    <p class="text-sm text-gray-400">380 solutions</p>
+                                </div>
+                                <div class="text-gray-400">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add any necessary JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle discussion creation
+            const newDiscussionBtn = document.querySelector('button');
+            newDiscussionBtn.addEventListener('click', function() {
+                // Add your discussion creation logic here
+            });
+
+            // Handle search
+            const searchInput = document.querySelector('input[type="text"]');
+            searchInput.addEventListener('input', function(e) {
+                // Add your search logic here
+            });
+        });
+    </script>
+</body>
+</html>
