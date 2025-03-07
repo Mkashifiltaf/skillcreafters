@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Aggregation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation -->
+    <header class="header fixed w-full z-50 glass-card animated-header">
+        <div class="logo">SkillCrafters</div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search videos, courses, instructors..." class="search-bar">
+        </div>
+        <div class="profile">
+            <img src="profile-pic.png" alt="Profile" class="profile-pic">
+            <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="category-navbar">
+        <ul>
+            <li><a href="#">AI</a></li>
+            <li><a href="#">Data Science</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Mobile Development</a></li>
+            <li><a href="#">Machine Learning</a></li>
+            <li><a href="#">Cybersecurity</a></li>
+            <li><a href="#">softwar Development</a></li>
+            <li><a href="#">Cloud Computing</a></li>
+        </ul>
+    </nav>
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> General</a></li>
+                <li><a href="#"><i class="fas fa-book-open"></i> Started Courses</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Trending Technologies</a></li>
+                <li><a href="#"><i class="fas fa-gem"></i> Gamification</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#"><i class="fas fa-list"></i> Playlist</a></li>
+                <li><a href="#"><i class="fas fa-clock"></i> Watch Later</a></li>
+                <li><a href="#"><i class="fas fa-download"></i> Downloaded Courses</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> History</a></li>
+                <li><a href="#"><i class="fas fa-comments"></i> Chat with AI</a></li>
+                <li><a href="#"><i class="fas fa-clipboard-list"></i> Interview Preparation</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Study Together</a></li>
+                <li><a href="#"><i class="fas fa-handshake"></i> Work Together</a></li>
+            </ul>
+        </aside>
+        <main>
+            <div id="course-list" class="course-list">
+                <!-- Courses will be dynamically loaded here -->
+            </div>
+        </main>
+    </div>
+    <script src="course-aggregation.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Fetch courses from a JSON file or API
+        fetch('courses.js') // Ensure this path is correct
+            .then(response => response.json())
+            .then(data => {
+                courses = data;
+                loadCourses();
+            });
+    </script>
+</body>
+</html>

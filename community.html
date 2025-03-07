@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-matrix">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                    <a href="roadmap.html" class="text-gray-300 hover:text-white transition-colors">AI Roadmap</a>
+                    <a href="practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                    <a href="community.html" class="text-gray-300 hover:text-white transition-colors">Community</a>
+                    <a href="signin.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Community Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold gradient-text mb-4">Join Our Community</h1>
+                <p class="text-xl text-gray-300">Connect, learn, and grow with fellow AI enthusiasts</p>
+            </div>
+
+            <!-- Community Features -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Discord -->
+                <div class="glass-card rounded-xl p-8 text-center">
+                    <i class="fab fa-discord text-6xl text-blue-500 mb-6"></i>
+                    <h3 class="text-2xl font-bold text-white mb-4">Discord Community</h3>
+                    <p class="text-gray-300 mb-6">Join our active Discord server with over 10,000 members. Get help, share knowledge, and make friends!</p>
+                    <a href="https://discord.gg/skillcrafters" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors">
+                        Join Discord
+                    </a>
+                </div>
+
+                <!-- Forums -->
+                <div class="glass-card rounded-xl p-8 text-center">
+                    <i class="fas fa-comments text-6xl text-purple-500 mb-6"></i>
+                    <h3 class="text-2xl font-bold text-white mb-4">Discussion Forums</h3>
+                    <p class="text-gray-300 mb-6">Engage in deep technical discussions, share your projects, and get expert feedback from the community.</p>
+                    <a href="forums.html" class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition-colors">
+                        Browse Forums
+                    </a>
+                </div>
+
+                <!-- Study Groups -->
+                <div class="glass-card rounded-xl p-8 text-center">
+                    <i class="fas fa-users text-6xl text-pink-500 mb-6"></i>
+                    <h3 class="text-2xl font-bold text-white mb-4">Study Groups</h3>
+                    <p class="text-gray-300 mb-6">Form or join study groups to learn together, work on projects, and prepare for certifications.</p>
+                    <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors">
+                        Find Groups
+                    </a>
+                </div>
+            </div>
+
+            <!-- Latest Discussions -->
+            <div class="glass-card rounded-xl p-8 mb-16">
+                <h2 class="text-2xl font-bold text-white mb-8">Latest Discussions</h2>
+                <div class="space-y-6">
+                    <!-- Discussion Item -->
+                    <div class="flex items-start space-x-4 p-4 hover:bg-white/5 rounded-lg transition-colors">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-white font-semibold">Best practices for fine-tuning BERT</h3>
+                                <span class="text-sm text-gray-400">2 hours ago</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-2">Looking for advice on fine-tuning BERT for sentiment analysis. Any tips on preventing overfitting?</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span><i class="fas fa-comment mr-1"></i> 23 replies</span>
+                                <span><i class="fas fa-heart mr-1"></i> 45 likes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Discussion Item -->
+                    <div class="flex items-start space-x-4 p-4 hover:bg-white/5 rounded-lg transition-colors">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-white font-semibold">Show and Tell: My first GANs project</h3>
+                                <span class="text-sm text-gray-400">5 hours ago</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-2">Just completed my first GANs project generating anime characters. Check out the results!</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span><i class="fas fa-comment mr-1"></i> 56 replies</span>
+                                <span><i class="fas fa-heart mr-1"></i> 132 likes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Discussion Item -->
+                    <div class="flex items-start space-x-4 p-4 hover:bg-white/5 rounded-lg transition-colors">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-1">
+                                <h3 class="text-white font-semibold">Resources for MLOps</h3>
+                                <span class="text-sm text-gray-400">1 day ago</span>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-2">What are some good resources to learn MLOps? Looking for both theoretical and practical materials.</p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                <span><i class="fas fa-comment mr-1"></i> 34 replies</span>
+                                <span><i class="fas fa-heart mr-1"></i> 89 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">10K+</div>
+                    <div class="text-gray-300">Community Members</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">500+</div>
+                    <div class="text-gray-300">Daily Active Users</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">1000+</div>
+                    <div class="text-gray-300">Topics Discussed</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                    <div class="text-gray-300">Study Groups</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

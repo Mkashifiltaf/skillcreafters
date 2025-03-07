@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6,#f65c5c );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .course-progress {
+            height: 4px;
+            background: rgba(59, 130, 246, 0.5);
+            border-radius: 2px;
+        }
+        .course-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .category-chip {
+            transition: all 0.3s ease;
+        }
+        .category-chip:hover {
+            background: rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+        }
+        .search-bar {
+            background: transparent;
+            backdrop-filter: blur(5px);
+        }
+        .filter-dropdown {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: transparent;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {background-color: rgba(255, 255, 255, 0.1);}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .futuristic-dropdown {
+            background-color: transparent;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .arrow {
+            background-color: transparent;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .header-links {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .header-links.active {
+            display: flex;
+        }
+        .header-links .dropdown {
+            margin-right: 20px;
+            position: relative;
+        }
+        .header-links .dropdown-content {
+            position: absolute;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+        .header-links .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .header-links a {
+            margin-right: 20px;
+        }
+        .courses-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-matrix min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card pt-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="text-4xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="flex-1 max-w-5xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Search courses, topics, or instructors..." 
+                               class="w-full px-8 py-4 rounded-full bg-black/30 border border-gray-700 text-white focus:outline-none focus:border-blue-500">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-2">
+                    <button class="arrow" onclick="navigateLeft()"><i class="fas fa-chevron-left"></i></button>
+                    <div class="header-links active">
+                        <div class="dropdown">
+                            <button class="dropbtn futuristic-dropdown">Resources</button>
+                            <div class="dropdown-content">
+                                <a href="#general-products" class="text-gray-300 hover:text-white transition-colors">General Products</a>
+                                <a href="#general-interviews" class="text-gray-300 hover:text-white transition-colors">General Interviews</a>
+                                <a href="#tips-and-tricks" class="text-gray-300 hover:text-white transition-colors">Tips and Tricks</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn futuristic-dropdown">You</button>
+                            <div class="dropdown-content">
+                                <a href="#your-profile" class="text-gray-300 hover:text-white transition-colors">Your Profile</a>
+                                <a href="#your-settings" class="text-gray-300 hover:text-white transition-colors">Your Settings</a>
+                                <a href="#analytics" class="text-gray-300 hover:text-white transition-colors">Analytics</a>
+                                <a href="#downloads" class="text-gray-300 hover:text-white transition-colors">Downloads</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn futuristic-dropdown">AI Support</button>
+                            <div class="dropdown-content">
+                                <a href="#ai-assistant" class="text-gray-300 hover:text-white transition-colors">AI Assistant</a>
+                                <a href="#interview-preparation" class="text-gray-300 hover:text-white transition-colors">Interview Preparation</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn futuristic-dropdown">Collaborative Learning</button>
+                            <div class="dropdown-content">
+                                <a href="#group-study" class="text-gray-300 hover:text-white transition-colors">Group Study</a>
+                                <a href="#group-work" class="text-gray-300 hover:text-white transition-colors">Group Work</a>
+                            </div>
+                        </div>
+                        <a href="courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                        <a href="roadmap.html" class="text-gray-300 hover:text-white transition-colors">AI Roadmap</a>
+                        <a href="practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                        <a href="student/progress.html" class="text-gray-300 hover:text-white transition-colors">Student Progress</a>
+                    </div>
+                    <button class="arrow" onclick="navigateRight()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Categories Scroll -->
+            <div class="flex space-x-4 overflow-x-auto pb-4 mb-8 scrollbar-hide">
+                <button class="category-chip px-4 py-2 rounded-full bg-blue-600 text-white whitespace-nowrap">All Courses</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">Machine Learning</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">Deep Learning</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">Computer Vision</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">Natural Language Processing</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">Reinforcement Learning</button>
+                <button class="category-chip px-4 py-2 rounded-full bg-black/30 text-gray-300 hover:text-white whitespace-nowrap">AI Ethics</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex space-x-4">
+                    <select class="bg-black/30 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500">
+                        <option>Difficulty Level</option>
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                    <select class="bg-black/30 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500">
+                        <option>Duration</option>
+                        <option>0-2 Hours</option>
+                        <option>2-5 Hours</option>
+                        <option>5+ Hours</option>
+                        <option>Full Playlist</option>
+                    </select>
+                    <select class="bg-black/30 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500">
+                        <option>Rating</option>
+                        <option>4.5+</option>
+                        <option>4.0+</option>
+                        <option>3.5+</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-th-large text-xl"></i>
+                    </button>
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="fas fa-list text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Featured Course -->
+            <div class="glass-card rounded-xl p-6 mb-12">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/2">
+                        <iframe 
+                            src="https://www.youtube.com/embed/gfDE2a7MKjA"
+                            class="w-full h-64 rounded-lg"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="md:w-1/2">
+                        <span class="text-blue-500 font-semibold">Featured Course</span>
+                        <h2 class="text-xl font-bold text-white mt-2 mb-3">Python Tutorial For Beginners</h2>
+                        <p class="text-gray-300 mb-3 text-sm">Complete Python tutorial in Hindi - Learn Python from scratch in one video.</p>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj" 
+                                 alt="CodeWithHarry" 
+                                 class="w-8 h-8 rounded-full">
+                            <div>
+                                <div class="text-white font-semibold text-sm">CodeWithHarry</div>
+                                <div class="text-gray-400 text-xs">Programming Instructor</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 text-gray-300 text-xs mb-4">
+                            <span><i class="fas fa-clock mr-2"></i>12 hours</span>
+                            <span><i class="fas fa-signal mr-2"></i>Beginner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="courses-grid" id="courses-container">
+                <!-- Courses will be loaded here dynamically -->
+            </div>
+            <div id="loading-spinner" class="hidden text-center py-4">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category selection
+            const categories = document.querySelectorAll('.category-chip');
+            categories.forEach(category => {
+                category.addEventListener('click', () => {
+                    categories.forEach(c => c.classList.remove('bg-blue-600'));
+                    category.classList.add('bg-blue-600');
+                });
+            });
+
+            // Course cards hover effect
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        let currentIndex = 0;
+        const options = [
+            'Resources',
+            'You',
+            'AI Support',
+            'Collaborative Learning',
+            'Courses',
+            'AI Roadmap',
+            'Practice',
+            
+        ];
+
+        function navigateLeft() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            }
+            updateDisplay();
+        }
+
+        function navigateRight() {
+            if (currentIndex < options.length - 1) {
+                currentIndex++;
+            }
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const headerLinks = document.querySelectorAll('.header-links');
+            headerLinks.forEach((link, index) => {
+                link.classList.remove('active');
+                if (index === currentIndex) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        const coursesData = [
+            {
+                thumbnail: "https://i.ytimg.com/vi/7BXEvmWbeC8/maxresdefault.jpg",
+                title: "100 Days of Code - Python",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "100 Days Course",
+                level: "Beginner to Advanced",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agICnT8t4iYVSZ3eykIAOME"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/ER9SspLe4Hg/maxresdefault.jpg",
+                title: "Python for Beginners (Full Course)",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/7wnove7K-ZQ/maxresdefault.jpg",
+                title: "Complete Java Course for Beginners",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9aiL0kysYlfSOUgY5rNlOhUd"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/WQoB2z67hvY/maxresdefault.jpg",
+                title: "Complete JavaScript Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/BsDoLVMnmZs/maxresdefault.jpg",
+                title: "Complete HTML Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzPyItg"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/Edsxf_NBFrw/maxresdefault.jpg",
+                title: "CSS Complete Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzPyItg"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/vLqTf2b6GZw/maxresdefault.jpg",
+                title: "React JS Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Intermediate",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9aiL0kysYlfSOUgY5rNlOhUd"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/l1EssrLxt7E/maxresdefault.jpg",
+                title: "Python Django Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Intermediate",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ahwFDuExCpPFHAK829Wto2O"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/ZSPZob_1TOk/maxresdefault.jpg",
+                title: "C++ Programming Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9aiJWQ7VhY712fuimEpQZYp4"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/7Dh73z3icd8/maxresdefault.jpg",
+                title: "C Programming Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agrsRZjFECeFuWY5ev2pQlk"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/Oes56FoYABc/maxresdefault.jpg",
+                title: "PHP for Beginners",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/gwWKnnCMQ5c/maxresdefault.jpg",
+                title: "Git and GitHub Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/gfDE2a7MKjA/maxresdefault.jpg",
+                title: "Machine Learning with Python",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Advanced",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/5_5oE5lgrhw/maxresdefault.jpg",
+                title: "Data Structures and Algorithms (DSA)",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Intermediate",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/GZvSYJDk-us/maxresdefault.jpg",
+                title: "Complete Roadmaps",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "All Levels",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ahwLNzab_rVfZ06ZCZYEcNs"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/YXPyB4XeYLA/maxresdefault.jpg",
+                title: "Python GUI with Tkinter",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Intermediate",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/gfDE2a7MKjA/maxresdefault.jpg",
+                title: "Data Science and Big Data Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Advanced",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            },
+            {
+                thumbnail: "https://i.ytimg.com/vi/6mbwJ2xhgzM/maxresdefault.jpg",
+                title: "Full Web Development Course",
+                instructor: {
+                    name: "CodeWithHarry",
+                    role: "Programming Instructor",
+                    avatar: "https://yt3.googleusercontent.com/ytc/APkrFKZGyiFJtoR2Isio_S591bOWpCKBFaIzqSuAG56ubA=s176-c-k-c0x00ffffff-no-rj"
+                },
+                duration: "Full Course",
+                level: "Beginner to Intermediate",
+                url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9"
+            }
+        ];
+
+        let courseLoadIndex = 0;  // Renamed from currentIndex to avoid conflict
+        const coursesPerLoad = 4;
+        const coursesContainer = document.getElementById('courses-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        let isLoading = false;
+
+        function createCourseCard(course) {
+            return `
+                <div class="glass-card rounded-xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-1/2 relative group">
+                            <a href="${course.url}" target="_blank" class="block relative">
+                                <img 
+                                    src="${course.thumbnail}" 
+                                    alt="${course.title}" 
+                                    class="w-full h-64 rounded-lg object-cover"
+                                >
+                                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-play-circle text-6xl text-white"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="md:w-1/2">
+                            <span class="text-blue-500 font-semibold">Featured Course</span>
+                            <h3 class="text-xl font-bold text-white mt-2 mb-3">${course.title}</h3>
+                            <p class="text-gray-300 mb-3 text-sm">Master complete ${course.level} level concepts with practical examples.</p>
+                            <div class="flex items-center space-x-3 mb-3">
+                                <img src="${course.instructor.avatar}" 
+                                     alt="${course.instructor.name}" 
+                                     class="w-8 h-8 rounded-full">
+                                <div>
+                                    <div class="text-white font-semibold text-sm">${course.instructor.name}</div>
+                                    <div class="text-gray-400 text-xs">${course.instructor.role}</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 text-gray-300 text-xs mb-4">
+                                <span><i class="fas fa-clock mr-2"></i>${course.duration}</span>
+                                <span><i class="fas fa-signal mr-2"></i>${course.level}</span>
+                            </div>
+                            <a 
+                                href="${course.url}" 
+                                target="_blank"
+                                class="inline-block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all text-sm"
+                            >
+                                Start Learning Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `

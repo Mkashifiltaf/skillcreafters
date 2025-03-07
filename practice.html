@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .CodeMirror {
+            height: 400px;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-matrix">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                    <a href="roadmap.html" class="text-gray-300 hover:text-white transition-colors">AI Roadmap</a>
+                    <a href="practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                    <a href="community.html" class="text-gray-300 hover:text-white transition-colors">Community</a>
+                    <a href="signin.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Practice Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold gradient-text mb-4">Practice AI & ML</h1>
+                <p class="text-xl text-gray-300">Sharpen your skills with hands-on coding challenges</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Code Editor -->
+                <div class="lg:col-span-2">
+                    <div class="glass-card rounded-xl p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold text-white">Code Editor</h2>
+                            <div class="space-x-2">
+                                <button onclick="runCode()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md">
+                                    <i class="fas fa-play mr-2"></i>Run
+                                </button>
+                                <button onclick="resetCode()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">
+                                    <i class="fas fa-undo mr-2"></i>Reset
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="codeEditor">def train_model(X, y):
+    # Your code here
+    pass
+
+# Example usage:
+import numpy as np
+
+# Generate sample data
+X = np.random.rand(100, 2)
+y = np.sum(X, axis=1) > 1
+
+# Train the model
+model = train_model(X, y)
+</textarea>
+                    </div>
+
+                    <!-- Output Console -->
+                    <div class="glass-card rounded-xl p-6 mt-6">
+                        <h2 class="text-xl font-bold text-white mb-4">Output</h2>
+                        <div id="output" class="bg-black/50 rounded-md p-4 font-mono text-green-400 h-32 overflow-y-auto">
+                            > Ready to run your code...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenge Description -->
+                <div class="glass-card rounded-xl p-6">
+                    <h2 class="text-xl font-bold text-white mb-4">Challenge Description</h2>
+                    <div class="prose text-gray-300">
+                        <h3 class="text-lg font-semibold text-white">Binary Classification with NumPy</h3>
+                        <p class="mb-4">Implement a simple binary classification model using NumPy. Your task is to:</p>
+                        <ul class="list-disc list-inside space-y-2 mb-4">
+                            <li>Create a function that takes training data X and labels y</li>
+                            <li>Implement a simple linear classifier</li>
+                            <li>Return the trained model parameters</li>
+                        </ul>
+                        <div class="bg-black/30 p-4 rounded-md mb-4">
+                            <h4 class="text-white font-semibold mb-2">Input Format:</h4>
+                            <p>X: numpy array of shape (n_samples, n_features)</p>
+                            <p>y: numpy array of shape (n_samples,)</p>
+                        </div>
+                        <div class="bg-black/30 p-4 rounded-md">
+                            <h4 class="text-white font-semibold mb-2">Expected Output:</h4>
+                            <p>model: dictionary containing trained parameters</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress -->
+                    <div class="mt-8">
+                        <h3 class="text-lg font-semibold text-white mb-4">Your Progress</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm text-gray-300">
+                                <span>Completed Challenges</span>
+                                <span>12/50</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full" style="width: 24%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize CodeMirror
+        var editor = CodeMirror.fromTextArea(document.getElementById("codeEditor"), {
+            mode: "python",
+            theme: "monokai",
+            lineNumbers: true,
+            autoCloseBrackets: true,
+            matchBrackets: true,
+            indentUnit: 4,
+            tabSize: 4,
+            indentWithTabs: false,
+            lineWrapping: true
+        });
+
+        // Run code function
+        function runCode() {
+            const code = editor.getValue();
+            const output = document.getElementById("output");
+            output.innerHTML = "> Running code...\n";
+            
+            // In a real implementation, this would send the code to a backend server
+            // For now, we'll just simulate output
+            setTimeout(() => {
+                output.innerHTML += "> Code executed successfully!\n";
+                output.innerHTML += "> Model accuracy: 85.7%\n";
+            }, 1000);
+        }
+
+        // Reset code function
+        function resetCode() {
+            editor.setValue(`def train_model(X, y):
+    # Your code here
+    pass
+
+# Example usage:
+import numpy as np
+
+# Generate sample data
+X = np.random.rand(100, 2)
+y = np.sum(X, axis=1) > 1
+
+# Train the model
+model = train_model(X, y)`);
+            
+            const output = document.getElementById("output");
+            output.innerHTML = "> Code reset. Ready to run...\n";
+        }
+    </script>
+</body>
+</html>

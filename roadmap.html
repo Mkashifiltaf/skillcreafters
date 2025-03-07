@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Roadmap - SkillCrafters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-matrix {
+            background-color: #000;
+            background-image: 
+                radial-gradient(#11581E, #041607),
+                repeating-linear-gradient(transparent, transparent 2px, rgba(0,50,0,.4) 2px, rgba(0,50,0,.4) 4px);
+            background-size: cover;
+        }
+        .roadmap-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        }
+    </style>
+</head>
+<body class="bg-matrix">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="text-2xl font-bold gradient-text">SkillCrafters</div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="courses.html" class="text-gray-300 hover:text-white transition-colors">Courses</a>
+                    <a href="roadmap.html" class="text-gray-300 hover:text-white transition-colors">AI Roadmap</a>
+                    <a href="practice.html" class="text-gray-300 hover:text-white transition-colors">Practice</a>
+                    <a href="community.html" class="text-gray-300 hover:text-white transition-colors">Community</a>
+                    <a href="signin.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Roadmap Content -->
+    <div class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold gradient-text mb-4">Your AI Learning Journey</h1>
+                <p class="text-xl text-gray-300">A comprehensive roadmap to master AI and Machine Learning</p>
+            </div>
+
+            <div class="relative">
+                <div class="roadmap-line"></div>
+                
+                <!-- Roadmap Items -->
+                <div class="space-y-24">
+                    <!-- Foundations -->
+                    <div class="relative">
+                        <div class="glass-card rounded-xl p-8 ml-8 md:ml-auto md:mr-[52%] md:w-[45%]">
+                            <div class="absolute top-1/2 -translate-y-1/2 -left-8 md:left-auto md:-right-8 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-2xl text-white">1</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Foundations</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Python Programming</li>
+                                <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Linear Algebra</li>
+                                <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Statistics & Probability</li>
+                                <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Calculus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning -->
+                    <div class="relative">
+                        <div class="glass-card rounded-xl p-8 mr-8 md:mr-0 md:ml-[52%] md:w-[45%]">
+                            <div class="absolute top-1/2 -translate-y-1/2 -left-8 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-2xl text-white">2</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Machine Learning</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><i class="fas fa-check-circle text-purple-500 mr-2"></i>Supervised Learning</li>
+                                <li><i class="fas fa-check-circle text-purple-500 mr-2"></i>Unsupervised Learning</li>
+                                <li><i class="fas fa-check-circle text-purple-500 mr-2"></i>Model Evaluation</li>
+                                <li><i class="fas fa-check-circle text-purple-500 mr-2"></i>Feature Engineering</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Deep Learning -->
+                    <div class="relative">
+                        <div class="glass-card rounded-xl p-8 ml-8 md:ml-auto md:mr-[52%] md:w-[45%]">
+                            <div class="absolute top-1/2 -translate-y-1/2 -left-8 md:left-auto md:-right-8 w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center text-2xl text-white">3</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Deep Learning</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><i class="fas fa-check-circle text-pink-500 mr-2"></i>Neural Networks</li>
+                                <li><i class="fas fa-check-circle text-pink-500 mr-2"></i>CNN & Computer Vision</li>
+                                <li><i class="fas fa-check-circle text-pink-500 mr-2"></i>RNN & NLP</li>
+                                <li><i class="fas fa-check-circle text-pink-500 mr-2"></i>Transformers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Topics -->
+                    <div class="relative">
+                        <div class="glass-card rounded-xl p-8 mr-8 md:mr-0 md:ml-[52%] md:w-[45%]">
+                            <div class="absolute top-1/2 -translate-y-1/2 -left-8 w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-2xl text-white">4</div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Advanced Topics</h3>
+                            <ul class="space-y-2 text-gray-300">
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>Reinforcement Learning</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>GANs</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>MLOps</li>
+                                <li><i class="fas fa-check-circle text-indigo-500 mr-2"></i>AI Ethics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-24">
+                <h2 class="text-2xl font-bold text-white mb-4">Ready to Start Your Journey?</h2>
+                <div class="space-x-4">
+                    <a href="courses.html" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all">
+                        View Courses
+                    </a>
+                    <a href="practice.html" class="inline-block bg-white/10 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white/20 transition-all">
+                        Practice Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
